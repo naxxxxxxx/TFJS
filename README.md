@@ -40,7 +40,7 @@ Here is the structure:
 when you use, you just:
 
 ```javascript
-tf.test({ param1: '1', param2: '2', param3: '3', param4: 4 }, callback)
+tf.call.test({ param1: '1', param2: '2', param3: '3', param4: 4 }, callback)
 ```
 
 ### registers
@@ -51,19 +51,16 @@ Here is the structure:
 
 ```javascript
 {
-  name: 'test',// name that for js only
-  call: 'TESTJS',// registered name that Android call to JS
-  params: { // params sent to bridge
-    param1: ['isString', 'required'], // paramName:[Validator<string>,isRequried<'reqruied'|'optional'>]
-    param2: ['isString', 'required'],
-    param3: ['isString', 'optional'],
-    param4: ['isNumber', 'optional']
-  },
-  transformer: { // transform param before send to bridge
-    param4: 'toNumber' // paramName:Validator<string>
-  },
-  isSendJson: true // set it true, if you don't send json but single argument
-}
+  name: 'testJS', // name space for js
+  call: 'TEST_JS',// function name that registered in JS, is to be called from Native
+  from: 'Android' // * must have *, to tell method generator to register functions
+},
+```
+
+Native will call `TEST_JS` to get this function
+
+```javascript
+tf.reg.testJS
 ```
 
 ## extends Method
@@ -92,3 +89,5 @@ const methodObject = {
 
 tf.extends(methodObject)
 ```
+
+If the methodObject is construct correctly, it will be generated to `TF.call` or `TFreg`

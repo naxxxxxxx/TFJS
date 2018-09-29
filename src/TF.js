@@ -6,25 +6,27 @@ import * as vals from './utils/generator'
 
 const mapCallsToMethods = (main) => {
   callObjects.map((data) => {
-    const zilMethod = new Method(data)
-    zilMethod.assignToObject(main)
+    const method = new Method(data)
+    method.assignToObject(main)
     return false
   })
 }
 
 const mapRegsToMethods = (main) => {
   registerObjects.map((data) => {
-    const zilMethod = new Method(data)
-    zilMethod.assignToObject(main)
+    const reg = new Method(data)
+    reg.assignToObject(main)
     return false
   })
 }
 class TF {
   constructor() {
-    mapCallsToMethods(this)
-    mapRegsToMethods(this)
     this.validator = vals.validator
     this.util = vals
+    this.call = {}
+    this.reg = {}
+    mapCallsToMethods(this.call)
+    mapRegsToMethods(this.reg)
   }
 
   hasNativeMethod = (name, mode) => {
@@ -39,7 +41,10 @@ class TF {
     if (!vals.isObject(data)) {
       throw new TypeError('Extend Method has to be Object')
     }
-    return new Method(data).assignToObject(this)
+    if (data.from) {
+      return new Method(data).assignToObject(this.reg)
+    }
+    return new Method(data).assignToObject(this.call)
   }
 }
 
