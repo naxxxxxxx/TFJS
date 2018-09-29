@@ -55,6 +55,13 @@ Here is the structure:
   call: 'TEST_JS',// function name that registered in JS, is to be called from Native
   from: 'Android' // * must have *, to tell method generator to register functions
 },
+{
+  name: 'testJSAsync', // same above
+  call: 'TEST_JS_ASYNC', // samve above
+  from: 'Android', // same above
+  mode: 'async' // to tell Native this is a async method, see:
+                // https://github.com/wendux/DSBridge-Android/blob/master/readme-chs.md#dsbridgeregisterasynmethodnamenamespacefunctionasynapiobject
+}
 ```
 
 Native will call `TEST_JS` to get this function
@@ -90,4 +97,4 @@ const methodObject = {
 tf.extends(methodObject)
 ```
 
-If the methodObject is construct correctly, it will be generated to `TF.call` or `TFreg`
+If the methodObject is construct correctly, it will be generated to `TF.call` or `TF.reg`
