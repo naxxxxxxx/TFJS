@@ -2,9 +2,8 @@ import bridge from 'dsbridge'
 
 export const { hasNativeMethod } = bridge
 export class Bridge {
-  send = async (name, params) => {
-    const result = await bridge.call(name, params)
-    return result
+  send = (name, params) => {
+    return bridge.call(name, params)
   }
 
   sendAsync = (name, params, callback) => {
