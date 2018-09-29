@@ -24,6 +24,7 @@ class TF {
     mapCallsToMethods(this)
     mapRegsToMethods(this)
     this.validator = vals.validator
+    this.util = vals
   }
 
   hasNativeMethod = (name, mode) => {
