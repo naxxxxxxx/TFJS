@@ -14,6 +14,10 @@ const tf = new TF()
 
 ## Method definition
 
+## We Use DSBridge
+
+See: [DSBridge Javascript API](https://github.com/wendux/DSBridge-Android/blob/master/readme-chs.md#javascript-api)
+
 ### calls
 
 Call has to be injected to library. see `src/functions/calls`.
@@ -60,7 +64,7 @@ Here is the structure:
   call: 'TEST_JS_ASYNC', // samve above
   from: 'Android', // same above
   mode: 'async' // to tell Native this is a async method, see:
-                // https://github.com/wendux/DSBridge-Android/blob/master/readme-chs.md#dsbridgeregisterasynmethodnamenamespacefunctionasynapiobject
+
 }
 ```
 
