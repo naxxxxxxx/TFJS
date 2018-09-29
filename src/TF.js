@@ -18,9 +18,13 @@ const mapRegsToMethods = (main) => {
   })
 }
 class TF {
-  constructor(Laksa) {
+  constructor() {
     mapCallsToMethods(this)
     mapRegsToMethods(this)
+  }
+
+  extends(data) {
+    return new Method(data).assignToObject(this)
   }
 }
 
