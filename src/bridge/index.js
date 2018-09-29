@@ -1,6 +1,7 @@
 import bridge from 'dsbridge'
 
-class Bridge {
+export const { hasNativeMethod } = bridge
+export class Bridge {
   send = async (name, params) => {
     const result = await bridge.call(name, params)
     return result
@@ -13,6 +14,8 @@ class Bridge {
   register = (name, callback) => {
     bridge.register(name, callback)
   }
-}
 
-export default Bridge
+  registerAsync = (name, callback) => {
+    bridge.registerAsyn(name, callback)
+  }
+}

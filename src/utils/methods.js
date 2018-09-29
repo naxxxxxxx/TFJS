@@ -12,7 +12,7 @@ import {
 } from './generator'
 
 import { toNumber, toString } from './transformer'
-import Bridge from '../bridge'
+import { Bridge } from '../bridge'
 
 const validatorArray = {
   isNumber: [isNumber],
@@ -30,7 +30,7 @@ const transformerArray = { toNumber, toString }
 class Method {
   constructor(options) {
     const {
-      name, call, params, transformer, isSendJson, from
+      name, call, params, transformer, isSendJson, from, mode
     } = options
     this.name = name
     this.call = call
@@ -39,6 +39,7 @@ class Method {
     this.from = from || 'js'
     this.transformer = transformer || {}
     this.isSendJson = isSendJson || false
+    this.mode = mode || 'sync'
   }
 
   generateValidateObjects = () => {
@@ -118,8 +119,10 @@ class Method {
     }
     if (this.bridge !== null && this.from !== 'js') {
       return (callback) => {
-        if (callback) {
+        if (callback && this.mode !== 'async') {
           return this.bridge.register(this.call, callback)
+        } else if (callback && this.mode === 'async') {
+          this.bridge.registerAsync(this.call, callback)
         }
         return this.bridge.register(this.call)
       }

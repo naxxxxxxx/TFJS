@@ -5,7 +5,13 @@ export default [
    */
   {
     name: 'testJS',
-    call: 'TESTJS',
+    call: 'TEST_JS',
     from: 'Android'
+  },
+  {
+    name: 'testJSAsync',
+    call: 'TEST_JS_ASYNC',
+    from: 'Android',
+    mode: 'async'
   }
 ]

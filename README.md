@@ -43,6 +43,29 @@ when you use, you just:
 tf.test({ param1: '1', param2: '2', param3: '3', param4: 4 }, callback)
 ```
 
+### registers
+
+Javascript side register a function to let Android to call
+
+Here is the structure:
+
+```javascript
+{
+  name: 'test',// name that for js only
+  call: 'TESTJS',// registered name that Android call to JS
+  params: { // params sent to bridge
+    param1: ['isString', 'required'], // paramName:[Validator<string>,isRequried<'reqruied'|'optional'>]
+    param2: ['isString', 'required'],
+    param3: ['isString', 'optional'],
+    param4: ['isNumber', 'optional']
+  },
+  transformer: { // transform param before send to bridge
+    param4: 'toNumber' // paramName:Validator<string>
+  },
+  isSendJson: true // set it true, if you don't send json but single argument
+}
+```
+
 ## extends Method
 
 ### TF.extends
