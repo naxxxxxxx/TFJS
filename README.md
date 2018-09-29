@@ -12,11 +12,11 @@ In browser
 const tf = new TF()
 ```
 
-## Method definition
-
-## We Use DSBridge
+## This library use DSBridge
 
 See: [DSBridge Javascript API](https://github.com/wendux/DSBridge-Android/blob/master/readme-chs.md#javascript-api)
+
+## Method definition
 
 ### calls
 
