@@ -1,8 +1,4 @@
 export default [
-  /**
-   * createTransaction
-   * @params {txHash:Hash}
-   */
   {
     name: 'test',
     call: 'TEST',

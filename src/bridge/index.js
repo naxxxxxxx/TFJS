@@ -1,4 +1,4 @@
-import bridge from 'dsbridge'
+const bridge = require('dsbridge')
 
 export const { hasNativeMethod } = bridge
 export class Bridge {
